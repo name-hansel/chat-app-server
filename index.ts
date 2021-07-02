@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 5000;
 const server = createServer();
 const io = new Server(server, {
   cors: {
+    // TODO change this to client
     origin: "http://localhost:3000",
     methods: ["GET", "POST"],
   },
@@ -28,6 +29,9 @@ let num = 0;
 
 app.use(cors());
 app.use(express.json());
+app.get("/", (req, res) => {
+  res.send("Chat-App server");
+});
 
 dotenv.config();
 
