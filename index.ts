@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5000;
 const server = createServer();
 const io = new Server(server, {
   cors: {
-    origin: "https://hansel-chat-app-client.herokuapp.com/",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
