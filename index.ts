@@ -1,4 +1,3 @@
-import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import { Server, Socket } from "socket.io";
@@ -29,11 +28,14 @@ let num = 0;
 
 app.use(cors());
 app.use(express.json());
+
 app.get("/", (req, res) => {
-  res.send("Chat-App server");
+  res.send("App is running");
 });
 
-dotenv.config();
+app.listen(PORT, () => {
+  console.log("App running");
+});
 
 io.on("connection", (socket) => {
   console.log(`Someone joined ${++num}`);
@@ -99,4 +101,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+server.listen(PORT, () => {
+  console.log("Server is listening...");
+});
