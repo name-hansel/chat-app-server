@@ -31,3 +31,10 @@ export const removeCurrentUser = (id: string) => {
 
   return user;
 };
+
+export const canUserJoin = (username: string, room: string) => {
+  const foundUsers = users.filter(
+    (user) => user.room === room && username === user.username
+  );
+  return foundUsers.length > 0 ? false : true;
+};
