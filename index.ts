@@ -9,6 +9,7 @@ import {
   getCurrentUser,
   removeCurrentUser,
   canUserJoin,
+  getCurrentRooms,
 } from "./utils";
 
 const app = express();
@@ -29,6 +30,13 @@ server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 io.on("connection", (socket) => {
   // Client connects
+
+  // Get current rooms
+  socket.on("current-rooms", (callback) => {
+    callback({
+      rooms: getCurrentRooms(),
+    });
+  });
 
   // Return true if username does not exist in the room,
   // or return false
